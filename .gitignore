@@ -1,0 +1,7 @@
+.DS_Store
+*.log
+.env
+.env.*
+
+# PDF extraction artifacts (not used on site)
+assets/images/pdf_*

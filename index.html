@@ -1,0 +1,717 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PT Soiltama Indokarya Persada | Soil Investigation & Engineering</title>
+  <meta name="description" content="PT Soiltama Indokarya Persada menyediakan layanan soil investigation, engineering, dan project support untuk kebutuhan konstruksi dan pengembangan proyek." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            forest: { DEFAULT: '#0A251E', light: '#123528', dark: '#061510' },
+            lime: { DEFAULT: '#A3E635', dark: '#84CC16' },
+            earth: { DEFAULT: '#8B7355', light: '#C4A882' },
+          },
+          fontFamily: { sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'] },
+        },
+      },
+    };
+  </script>
+  <style>
+  html { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+  .scribble { position: relative; display: inline-block; }
+  .scribble::after {
+    content: ''; position: absolute; left: -4px; right: -4px; bottom: 2px;
+    height: 12px; background: #A3E635; opacity: 0.45; z-index: -1;
+    border-radius: 4px; transform: rotate(-1deg);
+  }
+  .card-float { box-shadow: 0 20px 50px -12px rgba(10,37,30,.15); }
+  </style>
+</head>
+<body class="bg-white text-gray-800 antialiased">
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/6285278221617" target="_blank" rel="noopener"
+   class="fixed bottom-6 right-6 z-50 flex h-14 w-14 items-center justify-center rounded-full bg-lime text-forest shadow-lg hover:bg-lime-dark transition-colors"
+   aria-label="WhatsApp">
+  <svg class="h-7 w-7" fill="currentColor" viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.435 9.884-9.884 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<!-- NAV -->
+<header class="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-gray-100">
+  <nav class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between lg:h-20">
+      <a href="#home" class="flex items-center">
+        <img src="assets/images/logo-soiltama.jpg" alt="PT Soiltama Indokarya Persada" class="h-11 sm:h-12 w-auto object-contain" />
+      </a>
+      <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-gray-600">
+        <a href="#home" class="hover:text-forest transition-colors">Home</a>
+        <a href="#about" class="hover:text-forest transition-colors">About</a>
+        <a href="#services" class="hover:text-forest transition-colors">Services</a>
+        <a href="#projects" class="hover:text-forest transition-colors">Projects</a>
+        <a href="#gallery" class="hover:text-forest transition-colors">Gallery</a>
+        <a href="#capabilities" class="hover:text-forest transition-colors">Capabilities</a>
+        <a href="#contact" class="hover:text-forest transition-colors">Contact</a>
+      </div>
+      <div class="flex items-center gap-3">
+        <a href="#contact" class="hidden sm:inline-flex items-center rounded-full bg-forest px-5 py-2.5 text-sm font-semibold text-white hover:bg-forest-light transition-colors">Konsultasikan Proyek</a>
+        <button id="menuBtn" class="lg:hidden p-2 rounded-lg hover:bg-gray-100" aria-label="Menu">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div id="mobileMenu" class="hidden lg:hidden pb-4 border-t border-gray-100">
+      <div class="flex flex-col gap-1 pt-3 text-sm font-medium">
+        <a href="#home" class="px-3 py-2 rounded-lg hover:bg-gray-50">Home</a>
+        <a href="#about" class="px-3 py-2 rounded-lg hover:bg-gray-50">About</a>
+        <a href="#services" class="px-3 py-2 rounded-lg hover:bg-gray-50">Services</a>
+        <a href="#projects" class="px-3 py-2 rounded-lg hover:bg-gray-50">Projects</a>
+        <a href="#gallery" class="px-3 py-2 rounded-lg hover:bg-gray-50">Gallery</a>
+        <a href="#capabilities" class="px-3 py-2 rounded-lg hover:bg-gray-50">Capabilities</a>
+        <a href="#contact" class="px-3 py-2 rounded-lg hover:bg-gray-50">Contact</a>
+        <a href="#contact" class="mt-2 mx-3 rounded-full bg-forest px-5 py-2.5 text-center text-white font-semibold">Konsultasikan Proyek</a>
+      </div>
+    </div>
+  </nav>
+</header>
+
+<!-- HERO -->
+<section id="home" class="relative overflow-hidden bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+      <div>
+        <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-4">Soil Investigation & Engineering</p>
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-forest leading-tight">
+          Understanding the Ground.<br/>
+          <span class="scribble">Delivering with Confidence.</span>
+        </h1>
+        <p class="mt-6 text-lg text-gray-600 leading-relaxed max-w-xl">
+          PT Soiltama Indokarya Persada hadir untuk mendukung kebutuhan soil investigation, engineering, dan pekerjaan terkait proyek dengan pendekatan yang berorientasi pada kondisi nyata di lapangan.
+        </p>
+        <div class="mt-8 flex flex-wrap gap-4">
+          <a href="#contact" class="inline-flex items-center rounded-full bg-lime px-7 py-3.5 text-sm font-bold text-forest hover:bg-lime-dark transition-colors">Konsultasikan Proyek</a>
+          <a href="#services" class="inline-flex items-center rounded-full border-2 border-forest px-7 py-3.5 text-sm font-bold text-forest hover:bg-forest hover:text-white transition-colors">Lihat Layanan</a>
+        </div>
+        <div class="mt-10 flex flex-wrap gap-6 text-sm text-gray-500">
+          <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-lime"></span>Field-Oriented</span>
+          <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-lime"></span>Professional</span>
+          <span class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-lime"></span>Project Focused</span>
+        </div>
+      </div>
+      <div class="relative lg:pl-8">
+        <div class="relative rounded-3xl overflow-hidden aspect-[4/3] card-float">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1200&q=80" alt="Kajian geoteknik — pekerjaan lapangan Soiltama" class="w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-forest/20"></div>
+        </div>
+        <div class="absolute -bottom-4 -left-4 sm:left-4 bg-white rounded-2xl p-4 card-float max-w-[200px]">
+          <p class="text-xs text-gray-500 font-medium">Projects Completed</p>
+          <p class="text-2xl font-extrabold text-forest">37+</p>
+          <p class="text-xs text-gray-400 mt-1">Across Indonesia</p>
+        </div>
+        <div class="absolute -top-4 -right-2 sm:right-4 bg-forest rounded-2xl p-4 card-float max-w-[180px]">
+          <p class="text-xs text-lime font-medium">Established</p>
+          <p class="text-2xl font-extrabold text-white">2019</p>
+          <p class="text-xs text-gray-400 mt-1">Yogyakarta, ID</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRUST BAR -->
+<section class="py-12 border-y border-gray-100 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+    <p class="text-sm font-semibold text-gray-500 mb-8">Trusted by partners across mining, infrastructure & construction</p>
+    <div class="flex flex-wrap justify-center items-center gap-x-10 gap-y-6 sm:gap-x-14">
+      <img src="assets/images/partners/partner-1.svg" alt="Nordic Mining" class="h-8 sm:h-9 w-auto opacity-50 hover:opacity-80 transition-opacity" />
+      <img src="assets/images/partners/partner-2.svg" alt="Pacific Steel" class="h-8 sm:h-9 w-auto opacity-50 hover:opacity-80 transition-opacity" />
+      <img src="assets/images/partners/partner-3.svg" alt="Summit Build" class="h-8 sm:h-9 w-auto opacity-50 hover:opacity-80 transition-opacity" />
+      <img src="assets/images/partners/partner-4.svg" alt="Harbour Log" class="h-8 sm:h-9 w-auto opacity-50 hover:opacity-80 transition-opacity" />
+      <img src="assets/images/partners/partner-5.svg" alt="Grid Infra" class="h-8 sm:h-9 w-auto opacity-50 hover:opacity-80 transition-opacity" />
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section class="bg-forest py-16 lg:py-20">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">
+          We Have Big Reasons to<br/><span class="text-lime">Improve Project Outcomes</span>
+        </h2>
+        <p class="mt-4 text-gray-400 leading-relaxed">Proyek tersebar di seluruh Indonesia — dari Sumatera hingga Papua, dengan fokus pada kualitas dan kepercayaan mitra kerja.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 gap-6">
+        <div class="bg-forest-light rounded-2xl p-6 border border-white/10">
+          <div class="h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center mb-4">
+            <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+          </div>
+          <p class="text-3xl font-extrabold text-white">37+</p>
+          <p class="text-gray-400 text-sm mt-1">Projects Completed</p>
+        </div>
+        <div class="bg-forest-light rounded-2xl p-6 border border-white/10">
+          <div class="h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center mb-4">
+            <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+          </div>
+          <p class="text-3xl font-extrabold text-white">Nationwide</p>
+          <p class="text-gray-400 text-sm mt-1">Service Coverage</p>
+        </div>
+        <div class="bg-forest-light rounded-2xl p-6 border border-white/10">
+          <div class="h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center mb-4">
+            <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+          </div>
+          <p class="text-3xl font-extrabold text-white">Multi-Discipline</p>
+          <p class="text-gray-400 text-sm mt-1">Expert Team</p>
+        </div>
+        <div class="bg-forest-light rounded-2xl p-6 border border-white/10">
+          <div class="h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center mb-4">
+            <svg class="h-5 w-5 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5a2 2 0 010 2.828l-1.586 1.586a2 2 0 01-2.828 0l-5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+          </div>
+          <p class="text-3xl font-extrabold text-white">4 Core</p>
+          <p class="text-gray-400 text-sm mt-1">Service Categories</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" class="py-20 lg:py-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div>
+        <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">About Soiltama</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-forest leading-tight">Understanding the Ground Before Making Decisions.</h2>
+        <p class="mt-6 text-gray-600 leading-relaxed">Setiap proyek memiliki kondisi dan tantangan yang berbeda. Pemahaman terhadap kondisi lapangan menjadi bagian penting dalam proses perencanaan dan pengambilan keputusan.</p>
+        <p class="mt-4 text-gray-600 leading-relaxed">PT Soiltama Indokarya Persada adalah penyedia layanan jasa konsultasi pada bidang geoteknik, penyelidikan tanah dan pengujian laboratorium, survei topografi dan pemetaan, geoteknik, struktur dan bidang engineering lain.</p>
+        <div class="mt-8 grid sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-gray-50 p-5">
+            <p class="text-xs text-gray-500 font-medium">Established</p>
+            <p class="text-lg font-bold text-forest mt-1">1 Februari 2019</p>
+          </div>
+          <div class="rounded-2xl bg-gray-50 p-5">
+            <p class="text-xs text-gray-500 font-medium">Service Area</p>
+            <p class="text-lg font-bold text-forest mt-1">Seluruh Indonesia</p>
+          </div>
+          <div class="rounded-2xl bg-gray-50 p-5">
+            <p class="text-xs text-gray-500 font-medium">Projects</p>
+            <p class="text-lg font-bold text-forest mt-1">37+ Proyek</p>
+          </div>
+          <div class="rounded-2xl bg-gray-50 p-5">
+            <p class="text-xs text-gray-500 font-medium">Team</p>
+            <p class="text-lg font-bold text-forest mt-1">Multi-Disiplin</p>
+          </div>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="rounded-2xl border border-gray-100 p-6 hover:border-lime/50 transition-colors">
+          <h3 class="font-bold text-forest text-lg">Accuracy</h3>
+          <p class="mt-2 text-gray-600 text-sm">Mengutamakan informasi dan data lapangan yang dapat mendukung pengambilan keputusan.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-100 p-6 hover:border-lime/50 transition-colors">
+          <h3 class="font-bold text-forest text-lg">Professionalism</h3>
+          <p class="mt-2 text-gray-600 text-sm">Menjalankan pekerjaan secara terstruktur, bertanggung jawab, dan sesuai kebutuhan proyek.</p>
+        </div>
+        <div class="rounded-2xl border border-gray-100 p-6 hover:border-lime/50 transition-colors">
+          <h3 class="font-bold text-forest text-lg">Field-Oriented</h3>
+          <p class="mt-2 text-gray-600 text-sm">Mengembangkan solusi dengan mempertimbangkan kondisi dan kebutuhan nyata di lapangan.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="py-20 lg:py-28 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">Our Services</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-forest">Engineering Support for Your Project.</h2>
+      <p class="mt-4 text-gray-600">Layanan dan kapabilitas Soiltama disusun untuk mendukung kebutuhan proyek dari tahap investigasi hingga kebutuhan engineering di lapangan.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="group rounded-3xl bg-white p-6 card-float hover:-translate-y-1 transition-transform">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5 group-hover:bg-lime transition-colors">
+          <svg class="h-6 w-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+        </div>
+        <h3 class="font-bold text-forest text-lg">Soil Investigation</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">SPT, CPT, pengujian laboratorium, survei geologi, dan geolistrik untuk investigasi kondisi tanah.</p>
+      </div>
+      <div class="group rounded-3xl bg-white p-6 card-float hover:-translate-y-1 transition-transform">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5 group-hover:bg-lime transition-colors">
+          <svg class="h-6 w-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/></svg>
+        </div>
+        <h3 class="font-bold text-forest text-lg">Geotechnical Engineering</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Kajian geoteknik, analisis struktur, dan pendekatan engineering untuk kondisi bawah permukaan.</p>
+      </div>
+      <div class="group rounded-3xl bg-white p-6 card-float hover:-translate-y-1 transition-transform">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5 group-hover:bg-lime transition-colors">
+          <svg class="h-6 w-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg>
+        </div>
+        <h3 class="font-bold text-forest text-lg">Topographic Survey</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Survei permukaan, mining survey, construction survey, aerial mapping, dan monitoring deformasi.</p>
+      </div>
+      <div class="group rounded-3xl bg-white p-6 card-float hover:-translate-y-1 transition-transform">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5 group-hover:bg-lime transition-colors">
+          <svg class="h-6 w-6 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        </div>
+        <h3 class="font-bold text-forest text-lg">UAV & Bathymetric</h3>
+        <p class="mt-2 text-sm text-gray-600 leading-relaxed">Pemetaan fotogrametri UAV dan survei batimetri untuk kebutuhan hidrografi dan offshore.</p>
+      </div>
+    </div>
+    <div class="mt-12 text-center">
+      <a href="#contact" class="inline-flex items-center rounded-full bg-forest px-7 py-3.5 text-sm font-bold text-white hover:bg-forest-light transition-colors">Discuss Your Project</a>
+    </div>
+  </div>
+</section>
+
+<!-- WHY SOILTAMA -->
+<section class="py-20 lg:py-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16 items-center">
+      <div class="relative">
+        <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=80" alt="Construction site survey" class="rounded-3xl w-full aspect-[4/3] object-cover card-float" />
+        <div class="absolute bottom-6 left-6 right-6 bg-white/95 backdrop-blur rounded-2xl p-5 card-float">
+          <p class="text-sm font-bold text-forest">Kepercayaan · Komunikatif · Kemanfaatan</p>
+          <p class="text-xs text-gray-500 mt-1">Filosofi bisnis Soiltama dalam setiap proyek</p>
+        </div>
+      </div>
+      <div>
+        <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">Why Soiltama</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-forest leading-tight">Built Around Real Project Needs.</h2>
+        <div class="mt-8 space-y-5">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center"><svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div><h3 class="font-bold text-forest">Field Understanding</h3><p class="text-sm text-gray-600 mt-1">Memahami bahwa kondisi lapangan menjadi bagian penting dalam setiap proyek.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center"><svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div><h3 class="font-bold text-forest">Practical Approach</h3><p class="text-sm text-gray-600 mt-1">Solusi disusun dengan mempertimbangkan kebutuhan nyata proyek.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center"><svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div><h3 class="font-bold text-forest">Responsive Communication</h3><p class="text-sm text-gray-600 mt-1">Komunikasi yang jelas dari tahap awal hingga pekerjaan selesai.</p></div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center"><svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg></div>
+            <div><h3 class="font-bold text-forest">Project Documentation</h3><p class="text-sm text-gray-600 mt-1">Dokumentasi menjadi bagian dari proses kerja dan evaluasi project.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section class="py-20 lg:py-28 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">How We Work</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-forest">From Project Requirements to Field Execution.</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="text-center">
+        <div class="mx-auto h-16 w-16 rounded-2xl bg-lime flex items-center justify-center text-forest font-extrabold text-xl mb-4">01</div>
+        <h3 class="font-bold text-forest text-lg">Understand</h3>
+        <p class="mt-2 text-sm text-gray-600">Memahami kebutuhan dan kondisi awal project.</p>
+      </div>
+      <div class="text-center">
+        <div class="mx-auto h-16 w-16 rounded-2xl bg-lime flex items-center justify-center text-forest font-extrabold text-xl mb-4">02</div>
+        <h3 class="font-bold text-forest text-lg">Assess</h3>
+        <p class="mt-2 text-sm text-gray-600">Mengidentifikasi kebutuhan investigasi, engineering, dan pekerjaan.</p>
+      </div>
+      <div class="text-center">
+        <div class="mx-auto h-16 w-16 rounded-2xl bg-lime flex items-center justify-center text-forest font-extrabold text-xl mb-4">03</div>
+        <h3 class="font-bold text-forest text-lg">Execute</h3>
+        <p class="mt-2 text-sm text-gray-600">Melaksanakan pekerjaan sesuai scope dan kondisi lapangan.</p>
+      </div>
+      <div class="text-center">
+        <div class="mx-auto h-16 w-16 rounded-2xl bg-lime flex items-center justify-center text-forest font-extrabold text-xl mb-4">04</div>
+        <h3 class="font-bold text-forest text-lg">Report</h3>
+        <p class="mt-2 text-sm text-gray-600">Menyusun dokumentasi dan hasil pekerjaan.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" class="py-20 lg:py-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">Selected Projects</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-forest">Experience in the Field.</h2>
+      <p class="mt-4 text-gray-600">Dokumentasi pekerjaan dan project memberikan gambaran mengenai pengalaman, kapabilitas, serta pendekatan Soiltama di lapangan.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=600&q=80" alt="Mining project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Soil Investigation</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">Soil Investigation & Aerial Photogrammetry — Mempawah, Kalimantan Barat</h3>
+          <p class="mt-2 text-sm text-gray-500">Transportation modes for washed bauxite mine to SGAR Plant</p>
+        </div>
+      </article>
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=600&q=80" alt="Railway project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Geotechnical</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">Kajian Geoteknik Jalur KA Makassar – Parepare, Sulawesi Selatan</h3>
+          <p class="mt-2 text-sm text-gray-500">KM 44+100 – KM 71+900 (Paket CT.410 – CT.415)</p>
+        </div>
+      </article>
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1590856029826-c37a678520b6?w=600&q=80" alt="Topographic survey" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Topographic Survey</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">Pengukuran Topografi Kampus Universitas Pertahanan, Bogor</h3>
+          <p class="mt-2 text-sm text-gray-500">Sentul, Kabupaten Bogor, Jawa Barat</p>
+        </div>
+      </article>
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=600&q=80" alt="Coal investigation" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Soil Investigation</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">Soil Investigation PT. Kaltim Nusantara Coal, Kutai Timur</h3>
+          <p class="mt-2 text-sm text-gray-500">Laboratory testing services for PT. KNC</p>
+        </div>
+      </article>
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1541976590-7139411ae9a0?w=600&q=80" alt="Bridge engineering" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Civil Engineering</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">DED Jembatan Sungai Kungkilan & Underpass, Sumatera Selatan</h3>
+          <p class="mt-2 text-sm text-gray-500">Lintas Muara Enim – Lahat</p>
+        </div>
+      </article>
+      <article class="group rounded-3xl overflow-hidden bg-gray-50 card-float hover:-translate-y-1 transition-transform">
+        <div class="aspect-[16/10] overflow-hidden">
+          <img src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=600&q=80" alt="Mining hauling road" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
+        <div class="p-6">
+          <span class="text-xs font-bold text-lime-dark uppercase">Mining Support</span>
+          <h3 class="mt-2 font-bold text-forest leading-snug">Geotechnical Investigation Hauling Road — Kalimantan Timur</h3>
+          <p class="mt-2 text-sm text-gray-500">PT. Sembada Sarana Transportasi, STA 0+000 – STA 80+000</p>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="py-20 lg:py-28 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">Field Documentation</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-forest">Gallery — Pekerjaan Lapangan.</h2>
+      <p class="mt-4 text-gray-600">Dokumentasi aktivitas soil investigation, survei topografi, UAV mapping, dan pekerjaan engineering di berbagai lokasi proyek.</p>
+    </div>
+    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4">
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-01.jpg" aria-label="View Soil Investigation">
+        <img src="assets/images/gallery/gallery-01.jpg" alt="Soil investigation lapangan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Soil Investigation</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float md:row-span-2 md:aspect-auto focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-09.jpg" aria-label="View Field Operation">
+        <img src="assets/images/gallery/gallery-09.jpg" alt="Pekerjaan lapangan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 min-h-[200px]" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Field Operation</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-02.jpg" aria-label="View Topographic Survey">
+        <img src="assets/images/gallery/gallery-02.jpg" alt="Survei topografi" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Topographic Survey</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-03.jpg" aria-label="View Aerial Mapping">
+        <img src="assets/images/gallery/gallery-03.jpg" alt="Aerial photogrammetry" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Aerial Mapping</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-05.jpg" aria-label="View Geotechnical">
+        <img src="assets/images/gallery/gallery-05.jpg" alt="Geotechnical survey" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Geotechnical</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-06.jpg" aria-label="View Site Documentation">
+        <img src="assets/images/gallery/gallery-06.jpg" alt="Dokumentasi lapangan" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Site Documentation</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float lg:col-span-2 lg:aspect-[2/1] focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/field/hero-drone.jpg" aria-label="View UAV Mapping">
+        <img src="assets/images/field/hero-drone.jpg" alt="UAV photogrammetry mapping" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 min-h-[160px]" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-4"><span class="text-white text-sm font-semibold opacity-0 group-hover:opacity-100 transition-opacity">UAV & Photogrammetric Mapping</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/field/spt-drilling.jpg" aria-label="View SPT Drilling">
+        <img src="assets/images/field/spt-drilling.jpg" alt="SPT drilling" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">SPT Drilling</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/field/lab-testing.jpg" aria-label="View Lab Testing">
+        <img src="assets/images/field/lab-testing.jpg" alt="Pengujian laboratorium" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Lab Testing</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/field/cpt-testing.jpg" aria-label="View CPT Testing">
+        <img src="assets/images/field/cpt-testing.jpg" alt="CPT testing" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">CPT Testing</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-13.jpg" aria-label="View Mining Support">
+        <img src="assets/images/gallery/gallery-13.jpg" alt="Mining project" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Mining Support</span></div>
+      </button>
+      <button type="button" class="gallery-item group relative rounded-2xl overflow-hidden aspect-square card-float focus:outline-none focus:ring-2 focus:ring-lime focus:ring-offset-2" data-src="assets/images/gallery/gallery-15.jpg" aria-label="View Construction Survey">
+        <img src="assets/images/gallery/gallery-15.jpg" alt="Construction survey" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" loading="lazy" />
+        <div class="absolute inset-0 bg-forest/0 group-hover:bg-forest/40 transition-colors flex items-end p-3"><span class="text-white text-xs font-semibold opacity-0 group-hover:opacity-100 transition-opacity">Construction Survey</span></div>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div id="lightbox" class="fixed inset-0 z-[60] hidden items-center justify-center bg-black/90 p-4" role="dialog" aria-modal="true" aria-label="Gallery preview">
+  <button id="lightboxClose" type="button" class="absolute top-4 right-4 text-white/80 hover:text-white p-2" aria-label="Close">
+    <svg class="h-8 w-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+  </button>
+  <img id="lightboxImg" src="" alt="Gallery preview" class="max-h-[90vh] max-w-full rounded-2xl object-contain" />
+</div>
+
+<!-- CAPABILITIES -->
+<section id="capabilities" class="py-20 lg:py-28 bg-forest">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="text-center max-w-2xl mx-auto mb-14">
+      <p class="text-xs font-bold tracking-widest text-lime uppercase mb-3">Our Capabilities</p>
+      <h2 class="text-3xl sm:text-4xl font-extrabold text-white">People, Equipment and Field Capability.</h2>
+      <p class="mt-4 text-gray-400">Kemampuan perusahaan tidak hanya ditentukan oleh layanan, tetapi juga oleh people, equipment, operational capability, dan dokumentasi.</p>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+      <div class="rounded-3xl bg-forest-light border border-white/10 p-6">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5">
+          <svg class="h-6 w-6 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-lg">People</h3>
+        <p class="mt-2 text-sm text-gray-400">Tim geoteknik, struktur, hidro, geodesi, dan site coordinator engineer berpengalaman.</p>
+      </div>
+      <div class="rounded-3xl bg-forest-light border border-white/10 p-6">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5">
+          <svg class="h-6 w-6 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-lg">Equipment</h3>
+        <p class="mt-2 text-sm text-gray-400">SPT rig, CPT, echo sounder, RTK GPS Trimble, UAV, dan peralatan survei hidrografi.</p>
+      </div>
+      <div class="rounded-3xl bg-forest-light border border-white/10 p-6">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5">
+          <svg class="h-6 w-6 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-lg">Field Operation</h3>
+        <p class="mt-2 text-sm text-gray-400">Operasional lapangan di berbagai kondisi — dari perkotaan hingga area tambang dan offshore.</p>
+      </div>
+      <div class="rounded-3xl bg-forest-light border border-white/10 p-6">
+        <div class="h-12 w-12 rounded-2xl bg-lime/20 flex items-center justify-center mb-5">
+          <svg class="h-6 w-6 text-lime" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+        </div>
+        <h3 class="font-bold text-white text-lg">Documentation</h3>
+        <p class="mt-2 text-sm text-gray-400">Laporan investigasi, charting batimetri, dan dokumentasi lapangan yang terstruktur.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BANNER -->
+<section class="py-20 lg:py-28 bg-gray-50">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="rounded-3xl bg-forest overflow-hidden card-float">
+      <div class="grid lg:grid-cols-2 items-center">
+        <div class="p-8 sm:p-12 lg:p-16">
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-white leading-tight">Planning Your Next Project?</h2>
+          <p class="mt-4 text-gray-400 leading-relaxed">Ceritakan kebutuhan proyek Anda kepada kami. Tim Soiltama siap mendiskusikan kebutuhan lebih lanjut.</p>
+          <div class="mt-8 flex flex-wrap gap-4">
+            <a href="#contact" class="inline-flex items-center rounded-full bg-lime px-7 py-3.5 text-sm font-bold text-forest hover:bg-lime-dark transition-colors">Konsultasikan Proyek</a>
+            <a href="https://wa.me/6285278221617" target="_blank" rel="noopener" class="inline-flex items-center rounded-full border-2 border-white/30 px-7 py-3.5 text-sm font-bold text-white hover:bg-white/10 transition-colors">WhatsApp Us</a>
+          </div>
+        </div>
+        <div class="hidden lg:block relative h-full min-h-[300px]">
+          <img src="https://images.unsplash.com/photo-1521737711862-e3b97375f902?w=700&q=80" alt="Team collaboration" class="absolute inset-0 w-full h-full object-cover" />
+          <div class="absolute inset-0 bg-forest/40"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="py-20 lg:py-28 bg-white">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-16">
+      <div>
+        <p class="text-xs font-bold tracking-widest text-lime-dark uppercase mb-3">Get In Touch</p>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-forest leading-tight">Let's Discuss Your Project.</h2>
+        <p class="mt-4 text-gray-600 leading-relaxed">Isi informasi singkat mengenai kebutuhan Anda dan tim Soiltama akan menghubungi Anda untuk diskusi lebih lanjut.</p>
+        <div class="mt-10 space-y-6">
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center">
+              <svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-forest text-sm">Alamat</p>
+              <p class="text-sm text-gray-600 mt-1">Jl. Kaliurang Km. 7,3, Kayen I No. 4B, Condongcatur, Sleman, D.I Yogyakarta 55283</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center">
+              <svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-forest text-sm">Telepon / WhatsApp</p>
+              <p class="text-sm text-gray-600 mt-1">0274 – 737 0584 · 0852 7822 1617</p>
+            </div>
+          </div>
+          <div class="flex gap-4">
+            <div class="flex-shrink-0 h-10 w-10 rounded-xl bg-lime/20 flex items-center justify-center">
+              <svg class="h-5 w-5 text-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            </div>
+            <div>
+              <p class="font-bold text-forest text-sm">Email</p>
+              <p class="text-sm text-gray-600 mt-1">soiltamaind@gmail.com</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <form id="contactForm" class="rounded-3xl bg-gray-50 p-6 sm:p-8 card-float space-y-5">
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm font-semibold text-forest mb-1.5" for="name">Nama *</label>
+            <input type="text" id="name" name="name" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-forest mb-1.5" for="company">Perusahaan</label>
+            <input type="text" id="company" name="company" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent" />
+          </div>
+        </div>
+        <div class="grid sm:grid-cols-2 gap-5">
+          <div>
+            <label class="block text-sm font-semibold text-forest mb-1.5" for="email">Email *</label>
+            <input type="email" id="email" name="email" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent" />
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-forest mb-1.5" for="phone">No. WhatsApp / Telepon *</label>
+            <input type="tel" id="phone" name="phone" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent" />
+          </div>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-forest mb-1.5" for="project_location">Lokasi Proyek</label>
+          <input type="text" id="project_location" name="project_location" class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent" />
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-forest mb-1.5" for="service">Kebutuhan Layanan *</label>
+          <select id="service" name="service" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent bg-white">
+            <option value="">Pilih layanan</option>
+            <option>Soil Investigation</option>
+            <option>Geotechnical Engineering</option>
+            <option>Civil Engineering</option>
+            <option>Mining / Field Engineering</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div>
+          <label class="block text-sm font-semibold text-forest mb-1.5" for="message">Ceritakan kebutuhan proyek Anda *</label>
+          <textarea id="message" name="message" rows="4" required class="w-full rounded-xl border border-gray-200 px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-lime focus:border-transparent resize-none"></textarea>
+        </div>
+        <button type="submit" class="w-full rounded-full bg-lime py-3.5 text-sm font-bold text-forest hover:bg-lime-dark transition-colors">Kirim Inquiry</button>
+        <p id="formStatus" class="text-sm text-center hidden"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="bg-forest-dark py-12 border-t border-white/10">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-10">
+      <div class="lg:col-span-2">
+        <div class="flex items-center gap-3 mb-4">
+          <img src="assets/images/logo-soiltama.jpg" alt="PT Soiltama Indokarya Persada" class="h-10 w-auto object-contain rounded-lg bg-white/95 px-2 py-1" />
+          <span class="font-bold text-white">PT Soiltama Indokarya Persada</span>
+        </div>
+        <p class="text-sm text-gray-400 max-w-md">Soil Investigation · Engineering · Project Solutions</p>
+        <p class="text-xs text-gray-500 mt-4">NIB: 9120203340945 · NPWP: 90.444.296.9-542.000</p>
+      </div>
+      <div>
+        <p class="font-bold text-white text-sm mb-4">Quick Links</p>
+        <div class="flex flex-col gap-2 text-sm text-gray-400">
+          <a href="#about" class="hover:text-lime transition-colors">About</a>
+          <a href="#services" class="hover:text-lime transition-colors">Services</a>
+          <a href="#projects" class="hover:text-lime transition-colors">Projects</a>
+          <a href="#gallery" class="hover:text-lime transition-colors">Gallery</a>
+          <a href="#capabilities" class="hover:text-lime transition-colors">Capabilities</a>
+          <a href="#contact" class="hover:text-lime transition-colors">Contact</a>
+        </div>
+      </div>
+      <div>
+        <p class="font-bold text-white text-sm mb-4">Contact</p>
+        <div class="flex flex-col gap-2 text-sm text-gray-400">
+          <span>soiltamaind@gmail.com</span>
+          <span>0274 – 737 0584</span>
+          <span>0852 7822 1617</span>
+        </div>
+      </div>
+    </div>
+    <div class="mt-10 pt-8 border-t border-white/10 text-center text-xs text-gray-500">
+      © 2026 PT Soiltama Indokarya Persada. All rights reserved. · Prototype dummy page.
+    </div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('menuBtn').addEventListener('click', () => {
+    document.getElementById('mobileMenu').classList.toggle('hidden');
+  });
+
+  document.querySelectorAll('.gallery-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      const lb = document.getElementById('lightbox');
+      document.getElementById('lightboxImg').src = item.dataset.src;
+      lb.classList.remove('hidden');
+      lb.classList.add('flex');
+    });
+  });
+
+  document.getElementById('lightboxClose').addEventListener('click', () => {
+    const lb = document.getElementById('lightbox');
+    lb.classList.add('hidden');
+    lb.classList.remove('flex');
+  });
+
+  document.getElementById('lightbox').addEventListener('click', (e) => {
+    if (e.target.id === 'lightbox') {
+      e.currentTarget.classList.add('hidden');
+      e.currentTarget.classList.remove('flex');
+    }
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      const lb = document.getElementById('lightbox');
+      lb.classList.add('hidden');
+      lb.classList.remove('flex');
+    }
+  });
+
+  document.getElementById('contactForm').addEventListener('submit', (e) => {
+    e.preventDefault();
+    const status = document.getElementById('formStatus');
+    status.textContent = 'Terima kasih! Inquiry Anda telah diterima (prototype — belum terhubung ke backend).';
+    status.className = 'text-sm text-center text-forest font-medium';
+    status.classList.remove('hidden');
+    e.target.reset();
+  });
+</script>
+</body>
+</html>
